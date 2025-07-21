@@ -46,7 +46,7 @@ jobs:
       - name: Build mod
         run: |
           mkdir -p ROT-LinuxFix
-          cp bin ROT-LinuxFix
+          cp -r bin ROT-LinuxFix
           cp SubModule.xml ROT-LinuxFix
 
       - name: Zip Bannerlord module
