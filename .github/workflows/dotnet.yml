@@ -12,8 +12,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Required to create releases
 
     steps:
       - name: Checkout code
@@ -43,6 +41,12 @@ jobs:
       - name: Test
         run: dotnet test --no-build --verbosity normal
 
+  release:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: write # Required to create releases
+    steps:
       - name: Build mod
         run: |
           mkdir -p ROT-LinuxFix
