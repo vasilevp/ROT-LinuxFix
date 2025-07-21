@@ -19,7 +19,7 @@
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ProjectDir)bin/Gaming.Desktop.x64_Shipping_Client" />
   </Target>
 
-  <ItemGroup Condition="Exists('lib/TaleWorlds.Core.dll')">
+  <ItemGroup Condition="Exists('lib/Win64_Shipping_Client/TaleWorlds.Core.dll')">
     <Reference Include="TaleWorlds.Core">
       <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Core.dll</HintPath>
       <Private>false</Private> <!-- This avoids copying -->
