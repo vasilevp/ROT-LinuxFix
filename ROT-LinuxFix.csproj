@@ -10,45 +10,55 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <GenerateDependencyFile>false</GenerateDependencyFile>
     <DebugType>embedded</DebugType>
-
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <Target Name="CopyOutput" AfterTargets="Build">
-    <Copy SourceFiles="$(TargetPath)"
-      DestinationFolder="$(ProjectDir)bin/Gaming.Desktop.x64_Shipping_Client" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ProjectDir)bin/Gaming.Desktop.x64_Shipping_Client" />
   </Target>
 
   <ItemGroup Condition="Exists('lib/TaleWorlds.Core.dll')">
     <Reference Include="TaleWorlds.Core">
       <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Core.dll</HintPath>
+      <Private>false</Private> <!-- This avoids copying -->
     </Reference>
     <Reference Include="TaleWorlds.Library">
       <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Library.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="TaleWorlds.Localization">
       <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Localization.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="TaleWorlds.MountAndBlade">
       <HintPath>lib/Win64_Shipping_Client/TaleWorlds.MountAndBlade.dll</HintPath>
-      <Private>false</Private> <!-- This avoids copying -->
+      <Private>false</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup Condition="Exists('$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.Core.dll')">
     <Reference Include="TaleWorlds.Core">
       <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.Core.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="TaleWorlds.Localization">
       <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.Localization.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="TaleWorlds.Library">
       <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.Library.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="TaleWorlds.MountAndBlade">
       <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.MountAndBlade.dll</HintPath>
+      <Private>false</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="GitVersion.MsBuild" Version="5.10.3">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Lib.Harmony.Thin" Version="2.3.6">
       <ExcludeAssets>runtime</ExcludeAssets> <!-- This avoids copying -->
     </PackageReference>
