@@ -19,25 +19,35 @@
       DestinationFolder="$(ProjectDir)bin/Gaming.Desktop.x64_Shipping_Client" />
   </Target>
 
-  <ItemGroup>
+  <ItemGroup Condition="Exists('lib/TaleWorlds.Core.dll')">
+    <Reference Include="TaleWorlds.Core">
+      <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="TaleWorlds.Library">
+      <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="TaleWorlds.Localization">
+      <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Localization.dll</HintPath>
+    </Reference>
     <Reference Include="TaleWorlds.MountAndBlade">
       <HintPath>lib/Win64_Shipping_Client/TaleWorlds.MountAndBlade.dll</HintPath>
       <Private>false</Private> <!-- This avoids copying -->
     </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.Core.dll')">
     <Reference Include="TaleWorlds.Core">
-      <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Core.dll</HintPath>
-      <Private>false</Private> <!-- This avoids copying -->
+      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.Core.dll</HintPath>
     </Reference>
     <Reference Include="TaleWorlds.Localization">
-      <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Localization.dll</HintPath>
-      <Private>false</Private> <!-- This avoids copying -->
+      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.Localization.dll</HintPath>
     </Reference>
     <Reference Include="TaleWorlds.Library">
-      <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Library.dll</HintPath>
-      <Private>false</Private> <!-- This avoids copying -->
+      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="TaleWorlds.MountAndBlade">
+      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.MountAndBlade.dll</HintPath>
     </Reference>
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Lib.Harmony.Thin" Version="2.3.6">
       <ExcludeAssets>runtime</ExcludeAssets> <!-- This avoids copying -->
