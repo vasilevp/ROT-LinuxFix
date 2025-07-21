@@ -21,48 +21,19 @@
 
   <ItemGroup>
     <Reference Include="TaleWorlds.MountAndBlade">
-      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.MountAndBlade.dll</HintPath>
+      <HintPath>lib/Win64_Shipping_Client/TaleWorlds.MountAndBlade.dll</HintPath>
       <Private>false</Private> <!-- This avoids copying -->
     </Reference>
     <Reference Include="TaleWorlds.Core">
-      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.Core.dll</HintPath>
+      <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Core.dll</HintPath>
       <Private>false</Private> <!-- This avoids copying -->
     </Reference>
     <Reference Include="TaleWorlds.Localization">
-      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.Localization.dll</HintPath>
+      <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Localization.dll</HintPath>
       <Private>false</Private> <!-- This avoids copying -->
     </Reference>
     <Reference Include="TaleWorlds.Library">
-      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.Library.dll</HintPath>
-      <Private>false</Private> <!-- This avoids copying -->
-    </Reference>
-    <Reference Include="TaleWorlds.LinQuick">
-      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.LinQuick.dll</HintPath>
-      <Private>false</Private> <!-- This avoids copying -->
-    </Reference>
-    <Reference Include="TaleWorlds.ModuleManager">
-      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.ModuleManager.dll</HintPath>
-      <Private>false</Private> <!-- This avoids copying -->
-    </Reference>
-    <Reference Include="TaleWorlds.SaveSystem">
-      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.SaveSystem.dll</HintPath>
-      <Private>false</Private> <!-- This avoids copying -->
-    </Reference>
-    <Reference Include="TaleWorlds.ObjectSystem">
-      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.ObjectSystem.dll</HintPath>
-      <Private>false</Private> <!-- This avoids copying -->
-    </Reference>
-    <Reference Include="TaleWorlds.InputSystem">
-      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.InputSystem.dll</HintPath>
-      <Private>false</Private> <!-- This avoids copying -->
-    </Reference>
-    <Reference Include="TaleWorlds.Core.ViewModelCollection">
-      <HintPath>
-        $(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.Core.ViewModelCollection.dll</HintPath>
-      <Private>false</Private> <!-- This avoids copying -->
-    </Reference>
-    <Reference Include="TaleWorlds.PlayerServices">
-      <HintPath>$(BANNERLORD_GAME_DIR)/bin/Win64_Shipping_Client/TaleWorlds.PlayerServices.dll</HintPath>
+      <HintPath>lib/Win64_Shipping_Client/TaleWorlds.Library.dll</HintPath>
       <Private>false</Private> <!-- This avoids copying -->
     </Reference>
   </ItemGroup>
