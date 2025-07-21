@@ -22,11 +22,11 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Cache Bannerlord DLLs
-      uses: actions/cache@v3
+    - name: Download Bannerlord DLLs
+      uses: actions/download-artifact@v4
       with:
-        path: BannerlordLibs
-        key: bannerlord-dlls-v1
+        name: BannerlordDLLs
+        path: lib/
     - name: Build
       run: dotnet build --no-restore
     - name: Test
