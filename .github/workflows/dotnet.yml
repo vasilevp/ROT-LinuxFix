@@ -5,34 +5,58 @@ name: .NET
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to create releases
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Cache Bannerlord DLLs
-      uses: actions/cache@v4
-      with:
-        path: lib/
-        key: bannerlord-dlls-${{ runner.os }}-${{ hashFiles('lib/*.dll') }}
-        restore-keys: |
-          bannerlord-dlls-${{ runner.os }}-
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Cache Bannerlord DLLs
+        uses: actions/cache@v4
+        with:
+          path: lib/
+          key: bannerlord-dlls-${{ runner.os }}-${{ hashFiles('lib/*.dll') }}
+          restore-keys: |
+            bannerlord-dlls-${{ runner.os }}-
+
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+
+      - name: Build mod
+        run: |
+          mkdir -p ROT-LinuxFix
+          cp bin ROT-LinuxFix
+          cp SubModule.xml ROT-LinuxFix
+
+      - name: Zip Bannerlord module
+        run: zip -r ROT-LinuxFix.zip ROT-LinuxFix
+
+      - name: Create GitHub release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ github.ref_name }}" ROT-LinuxFix.zip \
+            --repo="${{ github.repository }}" \
+            --title="ROT-LinuxFix ${{ github.ref_name }}" \
+            --generate-notes
